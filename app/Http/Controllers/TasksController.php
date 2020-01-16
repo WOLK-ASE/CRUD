@@ -35,12 +35,29 @@ class TasksController extends Controller
         $task = Task::find($id);
         return view('edit', ['task' => $task]);
     }
-    public function update($id)
+    public function update(Request $request,$id)
     {
-
+        $this->validate($request, [
+            'title'=> 'required',
+            'description'=> 'required'
+        ]);
         $task = Task::find($id);
         $task->title = request('title');
         $task->description = request('description');
+        $task->save();
+        return redirect()->route('tasks.index');
+    }
+    public function check($id)
+    {
+        $task = Task::find($id);
+        $task->isDone = 1;
+        $task->save();
+        return redirect()->route('tasks.index');
+    }
+    public function uncheck($id)
+    {
+        $task = Task::find($id);
+        $task->isDone = 0;
         $task->save();
         return redirect()->route('tasks.index');
     }

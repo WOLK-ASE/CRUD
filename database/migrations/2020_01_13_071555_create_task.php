@@ -17,6 +17,7 @@ class CreateTask extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('description');
+            $table->boolean('isDone')->default(false);
             $table->timestamps();
         });
     }

@@ -20,6 +20,8 @@ Route::get('/tasks/create', 'TasksController@create')->name('tasks.create');
 Route::post('/tasks/store', 'TasksController@store')->name('tasks.store');
 Route::get('/tasks/{id}/edit', 'TasksController@edit')->name('tasks.edit');
 Route::put('/tasks/{id}/update', 'TasksController@update')->name('tasks.update');
+Route::put('/tasks/{id}/check', 'TasksController@check')->name('tasks.check');
+Route::put('/tasks/{id}/uncheck', 'TasksController@uncheck')->name('tasks.uncheck');
 Route::delete('/tasks/{id}/delete', 'TasksController@destroy');
 
 
